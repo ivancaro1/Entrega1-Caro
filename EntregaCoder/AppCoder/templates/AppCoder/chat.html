@@ -1,0 +1,33 @@
+
+{% extends "AppCoder/inicio.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+{% if newMessa.errors %}
+<p style="color: red;"> Mensaje erróneo, ingresalo de nuevo</p>
+{% endif %}
+
+<div class="container mt-3">
+    <div class="jumbotron">
+    <form action="" method="POST">{% csrf_token %}
+    <table>
+        
+        <div class="form-group">
+        {{ newMessa.as_table }}
+        </div>
+    </table>
+
+    <input type="submit", value="Enviar">
+
+    </form>
+</div>
+</div>
+
+{% for item in context %}
+    <b style="color:blue;">{{item.user}}</b> [<font style="color:brown;">{{item.date}}</font>] : <i style="color:green;">{{item.message}}</i>
+    <br>
+{% endfor %}
+
+{% endblock %}

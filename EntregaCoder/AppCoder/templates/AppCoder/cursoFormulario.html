@@ -1,4 +1,4 @@
-{% extends "AppCoder/index.html" %}
+{% extends "AppCoder/inicio.html" %}
 
 {% load static %}
 
@@ -8,13 +8,20 @@
 
     <p style="color: red;"> Están mal los datos, revisar</p>
     {% endif %}
+    <div class="container mt-3">
+    <div class="jumbotron">
     <form action="" method="POST">{% csrf_token %}
     <table>
+        
+        <div class="form-group">
         {{ productForm.as_table }}
+        </div>
     </table>
 
     <input type="submit", value="Enviar">
 
     </form>
+</div>
+</div>
     
 {% endblock %}
