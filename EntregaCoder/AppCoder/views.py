@@ -37,6 +37,8 @@ def newMessage(request):
             informacion = newMessa.cleaned_data
             mensaje = chat( user=informacion['user'], message=informacion['message'], date=now)
             mensaje.save()
+            info = infoUsers( user=informacion['user'], lastmessagedate=now)
+            info.save()
             mensajes = chat.objects.all()
             lista_mensajes = []
             for new in mensajes:
@@ -69,9 +71,6 @@ def cursoFormulario(request):
         productForm = productoFormulario()
     return render(request,"AppCoder/cursoFormulario.html", {"productForm":productForm})
 
-def buscarProducto(request):
-    return render(request,"AppCoder/busquedaProduct.html")
-
 def buscar(request):
     producto = request.GET.get("title", None)
     print(request)
@@ -83,3 +82,11 @@ def buscar(request):
         respuesta = "No enviaste datos"
         print(respuesta)
         return render(request,"AppCoder/busquedaProduct.html",{"respuesta":respuesta})
+
+def viewInfoUsers(request):
+    info = infoUsers.objects.all()
+    lista_users = []
+    for informa in info:
+        lista_users.append({"user":informa.user,
+                            "lastmessagedate":informa.lastmessagedate})
+    return render(request, "AppCoder/infoUser.html",{"context":lista_users})

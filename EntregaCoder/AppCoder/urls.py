@@ -7,4 +7,5 @@ urlpatterns = [
     path('chat', views.newMessage, name="Chat"),
     path('cursoFormulario', views.cursoFormulario, name="CursoFormulario"),
     path('buscar/',views.buscar, name="resultadosBusqueda"),
+    path('infoUser',views.viewInfoUsers, name="infoUser"),
 ]

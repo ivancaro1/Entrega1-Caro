@@ -4,26 +4,21 @@
 
 {% block contenidoQueCambia %}
 
-    <h2 style="color:brown;">Lista de productos</h2>
+    <h2 style="color:brown;">Listado de usuarios que han utilizado el chat</h2>
         <div class="table-responsive">
             <table class="table table-dark">
                 <tr style="color: yellow;">
-                            <th>Nombre Producto</th>
-                            <th>Precio</th>
-                            <th>Imagen</th>
+                            <th>Usuario</th>
+                            <th>Última fecha del mensaje</th>
                 </tr>
                 {% for item in context %}
                 <tr>
                         <td>
-                            {{item.title}}
+                            {{item.user}}
                         </td>
                         <td>
-                            {{item.price}}
+                            {{item.lastmessagedate}}
                         </td>
-                        <td>
-                            <img src="{{item.thumbnail}}" width="50" height="50"/>
-                        </td>
-                        <td>
                 </tr>
                 {% endfor %}
             </table>
